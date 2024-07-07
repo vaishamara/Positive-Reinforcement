@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz 3</title>
+  <link rel="icon" type="image/x-icon" href="logo .png">
+  <style>
+    body {
+      background-color: #f6fff8;
+      font-family: "Overpass", sans-serif;
+      font-optical-sizing: auto;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .text-center {
+      text-align: center;
+    }
+    /* Common style for all buttons */
+    .custom-btn {
+      margin: 10px; /* Adjusted margin for buttons */
+      padding: 15px 200px;
+      font-size: 18px;
+      border-radius: 30px; /* Rounded corners */
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+    .custom-btn:hover {
+      opacity: 0.8;
+    }
+    /* Style for "Correct" button */
+    .correct-btn {
+      background-color: #28a745 !important; /* Light green */
+      border-color: #28a745 !important; /* Light green */
+      color: #ffffff; /* White */
+    }
+    .correct-btn:hover {
+      background-color: #218838 !important; /* Darker green on hover */
+      border-color: #218838 !important; /* Darker green on hover */
+    }
+    /* Style for "Incorrect" button */
+    .incorrect-btn {
+      background-color: #dc3545 !important; /* Bright red */
+      border-color: #dc3545 !important; /* Bright red */
+      color: #ffffff; /* White */
+    }
+    .incorrect-btn:hover {
+      background-color: #c82333 !important; /* Darker red on hover */
+      border-color: #c82333 !important; /* Darker red on hover */
+    }
+    /* Style for "Check Answer" button */
+    .check-answer-btn {
+      background-color: #007bff !important; /* Blue */
+      border-color: #007bff !important; /* Blue */
+      color: #ffffff; /* White */
+      margin-top: 20px; /* Adjusted margin for Check Answer button */
+    }
+    .check-answer-btn:hover {
+      background-color: #0056b3 !important; /* Darker blue on hover */
+      border-color: #0056b3 !important; /* Darker blue on hover */
+    }
+    .quiz-video-container {
+      margin-bottom: 20px; /* Adjusted margin for video container */
+    }
+    .quiz-video {
+      max-width: 100%; /* Ensure video doesn't exceed container width */
+      width: 70%; /* Set the width of the video */
+    }
+    /* Style the radio buttons to look like regular buttons */
+    input[type="radio"] {
+      display: none; /* Hide the default radio button */
+    }
+    input[type="radio"] + label {
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 50px; /* Rounded corners */
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+    input[type="radio"] + label:hover {
+      opacity: 0.8;
+    }
+    input[type="radio"]:checked + label {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container text-center">
+    <div class="quiz-video-container">
+      <video id="quizVideo" controls src="" class="quiz-video">
+          Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="btn-group-toggle mt-4" data-toggle="buttons" id="optionButtons">
+      <label class="custom-btn correct-btn">
+        <input type="radio" name="options" value="0"> Correct
+      </label>
+      <label class="custom-btn incorrect-btn">
+        <input type="radio" name="options" value="1"> Incorrect
+      </label>
+    </div>
+    <button id="checkAnswerBtn" class="custom-btn check-answer-btn">Check Answer</button>
+    <!-- Score message -->
+    <div id="scoreMessage"></div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var quizData = [
+        {
+          videoPath: "C1.mp4",
+          correctOptionIndex: 0,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C2.mp4",
+          correctOptionIndex: 0,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C3.mp4",
+          correctOptionIndex: 0,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C4.mp4",
+          correctOptionIndex: 0,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C5.mp4",
+          correctOptionIndex: 0,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C6.mp4",
+          correctOptionIndex: 0,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C7.mp4",
+          correctOptionIndex: 0,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C8.mp4",
+          correctOptionIndex: 0,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C9.mp4",
+          correctOptionIndex: 1,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C10.mp4",
+          correctOptionIndex: 1,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C11.mp4",
+          correctOptionIndex: 0,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C12.mp4",
+          correctOptionIndex: 1,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C13.mp4",
+          correctOptionIndex: 0,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C14.mp4",
+          correctOptionIndex: 0,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C15.mp4",
+          correctOptionIndex: 1,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C16.mp4",
+          correctOptionIndex: 1,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C17.mp4",
+          correctOptionIndex: 1,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C18.mp4",
+          correctOptionIndex: 0,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C19.mp4",
+          correctOptionIndex: 0,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C20.mp4",
+          correctOptionIndex: 1,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C21.mp4",
+          correctOptionIndex: 1,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C22.mp4",
+          correctOptionIndex: 0,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C23.mp4",
+          correctOptionIndex: 0,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C24.mp4",
+          correctOptionIndex: 1,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C25.mp4",
+          correctOptionIndex: 0,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C26.mp4",
+          correctOptionIndex: 1,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C27.mp4",
+          correctOptionIndex: 1,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C28.mp4",
+          correctOptionIndex: 1,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C29.mp4",
+          correctOptionIndex: 1,
+          options: ["Correct", "Incorrect"]
+        },
+        {
+          videoPath: "C30.mp4",
+          correctOptionIndex: 0,
+          options: ["Correct", "Incorrect"]
+        },
+
+        
+      ];
+
+      var currentQuestionIndex = 0;
+      var correctAnswers = 0;
+
+      function loadQuiz(quizData) {
+        var quizVideo = document.getElementById("quizVideo");
+        var optionButtonsContainer = document.getElementById("optionButtons");
+
+        // Clear previous options
+        optionButtonsContainer.innerHTML = '';
+
+        // Set video source
+        quizVideo.src = quizData.videoPath;
+
+        quizData.options.forEach(function(option, index) {
+          var optionBtn = document.createElement("label");
+          optionBtn.classList.add("custom-btn");
+          if (index === 0) {
+            optionBtn.classList.add("correct-btn");
+          } else {
+            optionBtn.classList.add("incorrect-btn");
+          }
+          optionBtn.innerHTML = `<input type="radio" name="options" value="${index}">${option}`;
+          optionButtonsContainer.appendChild(optionBtn);
+        });
+      }
+
+      loadQuiz(quizData[currentQuestionIndex]);
+
+      var checkAnswerBtn = document.getElementById("checkAnswerBtn");
+      checkAnswerBtn.addEventListener("click", function() {
+        var selectedOption = document.querySelector('input[name="options"]:checked');
+        if (selectedOption) {
+          var selectedOptionValue = parseInt(selectedOption.value);
+          if (selectedOptionValue === quizData[currentQuestionIndex].correctOptionIndex) {
+            correctAnswers++;
+          }
+          var videoPath = selectedOptionValue == quizData[currentQuestionIndex].correctOptionIndex ? "Right answer.mp4" : "Wrong Answer.mp4";
+          playValidationVideo(videoPath);
+          setTimeout(function() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quizData.length) {
+              loadQuiz(quizData[currentQuestionIndex]);
+            } else {
+               // Redirect to score page with the score value
+               window.location.href = `score3.html?score=${correctAnswers}`;
+            }
+          }, 3000); // Adjust timeout duration as needed (3 seconds in this example)
+        } else {
+          alert("Please select an option before checking the answer.");
+        }
+      });
+
+      function playValidationVideo(videoPath) {
+        var videoPlayer = document.createElement("video");
+        videoPlayer.src = videoPath;
+        videoPlayer.controls = false;
+        videoPlayer.autoplay = true;
+        videoPlayer.style.width = "100%";
+        videoPlayer.style.height = "100%";
+        videoPlayer.style.position = "fixed";
+        videoPlayer.style.top = "0";
+        videoPlayer.style.left = "0";
+        videoPlayer.style.zIndex = "9999";
+        videoPlayer.onended = function() {
+          videoPlayer.remove();
+        };
+        document.body.appendChild(videoPlayer);
+      }
+    });
+  </script>
+</body>
+</html>

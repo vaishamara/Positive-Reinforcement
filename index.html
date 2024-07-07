@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KCRSS Quizzy</title>
+    <link rel="icon" type="image/x-icon" href="logo .png" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Custom CSS -->
+    <style>
+      body {
+        background-color: #f6fff8;
+        font-family: "Overpass", sans-serif;
+        font-optical-sizing: auto;
+      }
+
+      .header-text {
+        color: #000;
+        font-weight: 900;
+        margin-left: 20px;
+      }
+      .Kannada-text {
+        font-size: xx-large;
+        margin-left: 75px;
+      }
+
+      .header {
+        background-color: #cce3de;
+        padding: 20px;
+        text-align: center;
+        font-weight: 500;
+      }
+
+      .logo {
+        max-width: 80px;
+        margin-top: 10px;
+      }
+
+      .start-quiz-btn,
+      .signin-btn {
+        background-color: #a4c3b2;
+        color: #ffffff;
+        /* White */
+
+        border: none;
+        padding: 30px 150px;
+        font-size: 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        display: block; /* Make buttons display as block elements */
+        margin-bottom: 40px; /* Add margin between buttons */
+      }
+
+      .start-quiz-btn:hover,
+      .signin-btn:hover {
+        background-color: #6b9080;
+      }
+
+      .h1 {
+        font-size: xx-large;
+      }
+
+      .image-container {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .image {
+        width: 500px;
+        /* Adjust width as needed */
+        float: left;
+      }
+
+      .buttons-container {
+        float: right;
+        text-align: left;
+        margin-top: 20px;
+        margin-right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <img src="logo .png" alt="Logo" class="logo" />
+            <span class="header-text"
+              >Krishna Chaitanya Residential Special School</span
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="image-container">
+            <img class="image" src="Q.png" alt="Example Image" />
+          </div>
+          <div class="buttons-container">
+            <span class="Kannada-text">ಕ್ವಿಜ್ಜಿ ಗೆ ಸುಸ್ವಾಗತ</span>
+            <button
+              id="startQuizBtn"
+              onclick="startQuiz()"
+              class="start-quiz-btn"
+            >
+              QUIZ 1-ಕ್ವಿಜ್ 1
+            </button>
+            <button
+              id="startQuizBtn"
+              onclick="startQ2()"
+              class="start-quiz-btn"
+            >
+              QUIZ 2-ಕ್ವಿಜ್ 2
+            </button>
+            <button
+              id="startQuizBtn"
+              onclick="startQ3()"
+              class="start-quiz-btn"
+            >
+              QUIZ 3-ಕ್ವಿಜ್ 3
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script>
+      function startQuiz() {
+        window.location.href = "Quiz 1.html";
+      }
+      function startQ2() {
+        window.location.href = "Quiz 2.html";
+      }
+      function startQ3() {
+        window.location.href = "Quiz 3.html";
+      }
+    </script>
+  </body>
+</html>

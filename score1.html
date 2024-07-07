@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz 1 Score</title>
+    <link rel="icon" type="image/x-icon" href="logo .png">
+    <style>
+        body{
+      background-color: #f6fff8;
+      margin-top: 10%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: "Overpass", sans-serif;
+      font-optical-sizing: auto;
+      font-size: xx-large;
+        }
+        #imageContainer {
+            text-align: center; /* Center the image */
+            margin-bottom: 20px; /* Add some space between the image and the score message */
+        }
+        #imageContainer img {
+            max-width: 200px; /* Limit the maximum width of the image */
+            height: auto; /* Ensure the image height adjusts proportionally */
+        }
+    </style>
+</head>
+<body>
+    <div id="imageContainer">
+        <img src="stars.png" alt="Your Image">
+    <div id="scoreMessage"></div>
+
+    <script>
+        // Get the score value from the URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const score = urlParams.get('score');
+
+        // Display the score
+        const scoreMessage = document.getElementById('scoreMessage');
+        scoreMessage.textContent = `ನೀವು 20 ರಲ್ಲಿ ${score} ಪ್ರಶ್ನೆಗಳಿಗೆ ಸರಿಯಾಗಿ ಉತ್ತರಿಸಿದ್ದೀರಿ.`;
+    </script>
+</body>
+</html>
